@@ -1,101 +1,133 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import React, { useEffect, useRef } from 'react';
+import { Terminal, Zap } from 'lucide-react';
+
+const RetroPortfolio = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+
+    const stars = [];
+    const colors = ['#FFD700', '#ADFF2F', '#FF4500', '#1E90FF', '#00BFFF'];
+
+    const createStar = () => {
+      return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 4 + 2, // Increased size range
+        speed: Math.random() * 1 + 0.5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+      };
+    };
+
+    // Populate stars
+    for (let i = 0; i < 150; i++) {
+      stars.push(createStar());
+    }
+
+    const animateStars = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach((star) => {
+        ctx.fillStyle = star.color;
+        ctx.fillRect(star.x, star.y, star.size, star.size);
+
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0 - star.size; // Reset to top once it moves off screen
+        }
+      });
+
+      requestAnimationFrame(animateStars);
+    };
+
+    // Set canvas to full screen
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    animateStars();
+
+    // Adjust canvas size on resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    return () => window.removeEventListener('resize', null);
+  }, []);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="min-h-screen bg-black text-green-400 font-mono relative overflow-hidden">
+      {/* Retro 8-bit space background */}
+      <canvas ref={canvasRef} className="absolute inset-0" />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Content container */}
+      <div className="relative z-10 container mx-auto px-4 py-16">
+        {/* Neon header */}
+        <h1 className="text-6xl font-bold text-center mb-8 animate-pulse">
+          <span className="text-orange-500 glow-orange-500">Esteban Leandro Marin</span>
+        </h1>
+
+        {/* Subtitle */}
+        <p className="text-xl text-center mb-12 animate-blink">
+          Senior Fullstack Developer
+        </p>
+
+        {/* Terminal-style about section */}
+        <div className="bg-gray-900 p-6 rounded-lg shadow-neon mb-8">
+          <div className="flex items-center mb-4">
+            <Terminal className="mr-2" />
+            <span className="text-xl font-semibold">About Me</span>
+          </div>
+          <p className="mb-4">
+            Creative and passionate full-stack developer with over 10 years of experience, specializing in building fast, accessible, and user-centric digital products.
+          </p>
+          <p>
+            Excited about building cool stuff that makes a real impact, with a focus on usability and accessibility.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Skills section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="bg-gray-900 p-6 rounded-lg shadow-neon">
+            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+              <Zap className="mr-2" />
+              Front-End Skills
+            </h2>
+            <ul className="list-disc list-inside">
+              <li>React</li>
+              <li>Redux</li>
+              <li>Tailwind CSS</li>
+              <li>JavaScript / TypeScript</li>
+              <li>Next.js</li>
+            </ul>
+          </div>
+          <div className="bg-gray-900 p-6 rounded-lg shadow-neon">
+            <h2 className="text-2xl font-semibold mb-4 flex items-center">
+              <Zap className="mr-2" />
+              Back-End Skills
+            </h2>
+            <ul className="list-disc list-inside">
+              <li>C#</li>
+              <li>.NET</li>
+              <li>Prisma</li>
+              <li>SQL and NoSQL databases</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Contact button */}
+        <div className="text-center">
+          <button className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full animate-pulse">
+            Contact Me
+          </button>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default RetroPortfolio;
