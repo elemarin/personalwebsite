@@ -10,6 +10,8 @@ const RetroPortfolio = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
+    if (!ctx) return;
+
     const stars = [];
     const colors = ['#FFD700', '#ADFF2F', '#FF4500', '#1E90FF', '#00BFFF'];
 
@@ -23,10 +25,12 @@ const RetroPortfolio = () => {
       };
     };
 
-    // Populate stars
-    for (let i = 0; i < 150; i++) {
-      stars.push(createStar());
-    }
+    const populateStars = () => {
+      stars.length = 0; // Clear existing stars
+      for (let i = 0; i < 150; i++) {
+        stars.push(createStar());
+      }
+    };
 
     const animateStars = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -44,19 +48,21 @@ const RetroPortfolio = () => {
       requestAnimationFrame(animateStars);
     };
 
+    const setCanvasSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      populateStars(); // Re-populate stars to cover the new canvas size
+    };
+
     // Set canvas to full screen
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    setCanvasSize();
 
     animateStars();
 
     // Adjust canvas size on resize
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
+    window.addEventListener('resize', setCanvasSize);
 
-    return () => window.removeEventListener('resize', null);
+    return () => window.removeEventListener('resize', setCanvasSize);
   }, []);
 
   return (
