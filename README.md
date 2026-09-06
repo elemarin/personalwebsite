@@ -55,4 +55,4 @@ To learn more about the technologies used in this project, check out the followi
 
 ## Deployment
 
-This project is deployed using [Coolify](https://coolify.io/) and hosted on [Hetzner](https://www.hetzner.com/). Coolify is a self-hosted, open-source platform that simplifies the deployment of applications. Hetzner provides reliable and affordable cloud hosting services.
+This project is deployed on [Vercel](https://vercel.com/), with DNS managed through [Cloudflare](https://www.cloudflare.com/). Pushing to the connected GitHub repository triggers an automatic production deployment.

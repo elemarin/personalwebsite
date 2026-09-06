@@ -24,4 +24,27 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .glow-green {
+    text-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
+  }
+
+  .glow-orange {
+    text-shadow: 0 0 8px rgba(249, 115, 22, 0.6);
+  }
+}
+
+::selection {
+  background: rgba(74, 222, 128, 0.3);
+  color: #fff;
+}
+
+a,
+button {
+  outline-offset: 2px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #4ade80;
 }
