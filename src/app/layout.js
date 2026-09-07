@@ -1,7 +1,8 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import Link from "next/link";
+import SiteHeader from "@/components/site-header";
+import SiteFooter from "@/components/site-footer";
 import { metadata as siteMetadata } from "./metadata";
 
 const geistSans = localFont({
@@ -23,30 +24,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="min-h-screen bg-black text-green-400 font-mono">
-          {/* Top header navigation */}
-          <nav className="container mx-auto px-4 py-6 flex justify-between items-center">
-            <Link
-              href="/"
-              className="text-lg font-semibold text-green-400 hover:text-green-300 transition-colors"
-            >
-              <span className="text-orange-500">~/</span>esteban
-            </Link>
-            <ul className="flex space-x-6">
-              <li>
-                <Link
-                  href="/projects"
-                  className="text-green-400 glow-green hover:text-orange-400 transition-colors"
-                >
-                  projects
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* Content container */}
-          <main className="container mx-auto px-4 pb-16">{children}</main>
-        </div>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <SiteHeader />
+        <main id="main-content" tabIndex={-1}>{children}</main>
+        <SiteFooter />
         <Analytics />
       </body>
     </html>

@@ -1,58 +1,41 @@
-# Esteban Leandro Marin's Retro Portfolio
+# Esteban Leandro Marin's Portfolio
 
-Welcome to my retro-themed portfolio site! This project showcases my skills and projects in a unique, 8-bit inspired design.
+A mobile-first personal site built with Next.js and Tailwind CSS. Oversized
+local Geist typography, bold colors, and original SVG graphics give it a
+playful, poster-inspired feel, without background animation.
 
-## Overview
-
-This portfolio is built using [Next.js](https://nextjs.org/) and styled with [Tailwind CSS](https://tailwindcss.com/). It features a dynamic, animated background and a clean, responsive layout.
-
-## Features
-
-- **Retro Design**: An 8-bit inspired design with animated star background.
-- **Responsive Layout**: Optimized for both desktop and mobile devices.
-- **Projects Showcase**: A dedicated page to showcase my projects.
-- **Skills Section**: Highlighting my front-end and back-end skills.
-- **Contact Links**: Easy access to my GitHub and LinkedIn profiles.
-
-## Getting Started
-
-### Development Server
-
-To run the development server, use the following commands:
+## Develop
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Keep design iterations local; push or deploy only
+after approval. Use `npm run lint` and `npm run build` to check changes.
 
-### Editing the Site
+## Edit
 
-You can start editing the site by modifying the files in the `app` directory. The site auto-updates as you edit the files.
+- `src/app/page.js`: introduction, skills, Xbox experience, and applied AI work.
+- `src/app/projects/page.js`: project page.
+- `src/components/project-grid.js`: approved projects, personal descriptions,
+  technology tags, source links, and public project websites.
+- `src/components/site-header.js` and `site-footer.js`: navigation and contact links.
+- `src/app/globals.css`: colors, typography, and mobile-first layouts.
+- `src/app/metadata.js`: site title and social metadata.
 
-### Font Optimization
+Fonts are bundled locally with `next/font/local`. The site supports keyboard
+navigation and reduced motion. Body copy leads the layout; graphics are small,
+decorative accents. The project list is curated locally rather than loaded from
+GitHub at runtime, so only approved repositories appear.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Deploy
 
-## Learn More
+Hosted on Vercel, with DNS managed by Cloudflare.
 
-To learn more about the technologies used in this project, check out the following resources:
+```bash
+vercel        # Cloud preview, only after approval
+vercel --prod # Production, only after approval
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - Learn about Tailwind CSS utility-first framework.
-- [Learn Next.js](https://nextjs.org/learn) - An interactive Next.js tutorial.
-
-## Connect with Me
-
-- [GitHub](https://github.com/elemarin)
-- [LinkedIn](https://www.linkedin.com/in/estebanleandro/)
-
-## Deployment
-
-This project is deployed on [Vercel](https://vercel.com/), with DNS managed through [Cloudflare](https://www.cloudflare.com/). Pushing to the connected GitHub repository triggers an automatic production deployment.
+Git-based deployments require the repository to be connected in Vercel.
