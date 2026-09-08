@@ -21,6 +21,12 @@ const skills = [
     description: "Harness engineering that connects models to context, tools, and workflows, with evaluation tied to a clear goal.",
     tools: ["Harness engineering", "Prompt engineering", "Context engineering", "RAG", "Evaluation"],
   },
+  {
+    number: "04",
+    title: "Cloud & data.",
+    description: "My latest work includes Azure and Databricks, with Bicep and Terraform for infrastructure as code.",
+    tools: ["Azure", "Bicep", "Terraform", "Databricks"],
+  },
 ];
 
 const aiWork = [
@@ -132,29 +138,24 @@ export default function HomePage() {
               <p>Software Engineer<br />Xbox Experiences and Platforms</p>
             </div>
             <div className="experience-details">
-              <div>
-                <h4>A whole ecosystem, not just a screen.</h4>
-                <p>
-                  I work across web, console, smart TVs, PC, handhelds, and
-                  more. Each surface has its own constraints; my work connects
-                  those experiences with the systems behind them.
-                </p>
-              </div>
-              <div>
-                <h4>The difficult parts, end to end.</h4>
-                <p>
-                  I tackle complex engineering challenges across the stack,
-                  learning new systems and building the skills each problem demands.
-                </p>
-              </div>
-              <div>
-                <h4>More choice. Fewer barriers.</h4>
-                <p>
-                  More ways to play should mean real choice: where people play,
-                  how they get started, and what they can afford. That is the
-                  goal behind the engineering.
-                </p>
-              </div>
+              <p>
+                I work across Xbox on web, Android and iOS, console, PC, smart
+                TVs, and handhelds. Getting a new experience working across
+                that ecosystem means understanding how each client is built
+                and how it connects to the rest of the platform.
+              </p>
+              <p>
+                Some of the hardest problems involve several parts of the
+                stack at once. I work through those with the team, from React
+                and React Native interfaces down to C++/C# client code and
+                backend services. On the Xbox and PC clients, that includes
+                React Native for Windows and C++.
+              </p>
+              <p>
+                The goal is to bring video games to more people. I&apos;m
+                helping build more affordable ways to play, so players have
+                more options for how and where they can get into a game.
+              </p>
             </div>
           </article>
           <div className="previous-experience" aria-labelledby="previous-experience-title">

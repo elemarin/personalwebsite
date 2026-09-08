@@ -68,6 +68,7 @@ svg { flex-shrink: 0; }
 .skill-card { padding: 1.5rem; border: 2px solid var(--ink); background: var(--yellow); }
 .skill-card:nth-child(2) { background: var(--pink); }
 .skill-card:nth-child(3) { background: var(--green); color: var(--paper); }
+.skill-card:nth-child(4) { background: var(--blue); color: var(--paper); }
 .skill-card-top { margin-bottom: 1rem; }
 .skill-card h3 { font-size: 1.75rem; font-weight: 850; letter-spacing: -0.05em; line-height: 1.1; }
 .skill-card > p { max-width: 32rem; margin-top: 0.75rem; font-size: 1.125rem; line-height: 1.65; }
@@ -81,8 +82,7 @@ svg { flex-shrink: 0; }
 .experience-role h3 { margin-top: 1rem; font-size: 2rem; font-weight: 850; line-height: 1.15; letter-spacing: -0.04em; }
 .experience-role > p:last-child { margin-top: 0.75rem; font-size: 1rem; line-height: 1.65; }
 .experience-details { display: grid; gap: 1.5rem; }
-.experience-details h4 { font-size: 1.25rem; font-weight: 750; line-height: 1.35; letter-spacing: -0.025em; }
-.experience-details p { margin-top: 0.5rem; font-size: 1.125rem; line-height: 1.65; }
+.experience-details p { margin: 0; font-size: 1.125rem; line-height: 1.65; }
 .previous-experience { display: grid; gap: 1.5rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--ink); }
 .previous-experience h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; }
 .previous-experience h4 { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; align-items: baseline; font-size: 1.125rem; font-weight: 750; }
@@ -169,7 +169,6 @@ svg { flex-shrink: 0; }
   .section-intro { grid-template-columns: 1fr 1.2fr; gap: 3rem; }
   .section-title { font-size: clamp(3rem, 5vw, 4.75rem); }
   .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .skill-card:last-child { grid-column: 1 / -1; }
   .work-heading { grid-template-columns: 1fr 1.2fr; gap: 3rem; margin-bottom: 2.5rem; }
   .experience-card { grid-template-columns: 1fr 1.3fr; gap: 2.5rem; padding: 2rem; }
   .previous-experience { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -193,8 +192,7 @@ svg { flex-shrink: 0; }
   .hero-grid { grid-template-columns: 1.45fr 1fr; gap: 4rem; }
   .hero-description { font-size: 1.5rem; }
   .section-intro { gap: 5rem; }
-  .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 3rem; }
-  .skill-card:last-child { grid-column: auto; }
+  .skills-grid { gap: 1.5rem; margin-top: 3rem; }
   .skill-card { padding: 2rem; }
   .skill-card h3 { font-size: 2rem; }
   .experience-card { gap: 4rem; padding: 2.5rem; }
